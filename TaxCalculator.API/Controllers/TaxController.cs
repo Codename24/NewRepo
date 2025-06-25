@@ -29,7 +29,7 @@ namespace TaxCalculator.API.Controllers
         /// <returns></returns>
         [HttpGet("calculate/{annualSalary}")]
         public async Task<ActionResult<TaxResult>> CalculateTax(
-            [Range(1, int.MaxValue, ErrorMessage = "The value must be greater than 0.")]
+            [Range(1, int.MaxValue/2, ErrorMessage = "The value must be greater than 0.")]
             [FromRoute] int annualSalary)
         {
             _logger.LogInformation("Calculating tax for Annual Salary: {AnnualSalary}", annualSalary);

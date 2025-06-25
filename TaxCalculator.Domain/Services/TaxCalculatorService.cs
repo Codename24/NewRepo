@@ -17,7 +17,7 @@ namespace TaxCalculator.Domain.Services
                 throw new InvalidOperationException("TaxBands configuration is missing or empty.");
             }
 
-            _taxBands = settings.TaxBands;
+            _taxBands = settings.TaxBands.OrderBy(b => b.LowerLimit).ToList();
         }
 
         public async Task<TaxResult> CalculateTax(int annualSalary)
@@ -26,13 +26,22 @@ namespace TaxCalculator.Domain.Services
 
             foreach (var band in _taxBands)
             {
-                if (annualSalary < band.LowerLimit) break;
+                // Stop if the salary is less than the lower limit of the current band
+                if (annualSalary <= band.LowerLimit)
+                {
+                    break;
+                }
 
-                var taxableIncomeInBand = Math.Min(
-                    annualSalary - band.LowerLimit,
-                    band.UpperLimit.HasValue ? band.UpperLimit.Value - band.LowerLimit : int.MaxValue
-                );
+                // Calculate taxable income within the current band
+                int taxableIncomeInBand = annualSalary - band.LowerLimit;
 
+                // If the band has an upper limit, cap taxable income to the band limit
+                if (band.UpperLimit.HasValue)
+                {
+                    taxableIncomeInBand = Math.Min(taxableIncomeInBand, band.UpperLimit.Value - band.LowerLimit);
+                }
+
+                // Calculate tax for the taxable income in the current band
                 totalTax += (taxableIncomeInBand * band.TaxRate) / 100;
             }
 
@@ -47,6 +56,7 @@ namespace TaxCalculator.Domain.Services
                 TotalTax = totalTax,
                 TotalMonthlyTaxes = totalTax / 12,
             };
+
         }
 
     }

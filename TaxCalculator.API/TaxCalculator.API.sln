@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.API", "TaxCalculator.API.csproj", "{42FC5EE6-1910-4ECF-9DBF-1FF00E099CDB}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Infrastructure", "..\TaxCalculator.Infrastructure\TaxCalculator.Infrastructure.csproj", "{1FAF9833-48D4-40CC-97F5-24DAE03B1F03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Application", "..\TaxCalculator.Application\TaxCalculator.Application.csproj", "{502DF0F6-7EA7-460D-B156-24C6067D3634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Domain.Tests", "..\TaxCalculator.Domain.Tests\TaxCalculator.Domain.Tests.csproj", "{A6E61E35-891B-4E5D-B480-9B11AD73A1FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Application.Tests", "..\TaxCalculator.Application.Tests\TaxCalculator.Application.Tests.csproj", "{F5FEA9A7-77CF-4B8F-AC0C-02563E099832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{502DF0F6-7EA7-460D-B156-24C6067D3634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{502DF0F6-7EA7-460D-B156-24C6067D3634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{502DF0F6-7EA7-460D-B156-24C6067D3634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E61E35-891B-4E5D-B480-9B11AD73A1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E61E35-891B-4E5D-B480-9B11AD73A1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E61E35-891B-4E5D-B480-9B11AD73A1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E61E35-891B-4E5D-B480-9B11AD73A1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FEA9A7-77CF-4B8F-AC0C-02563E099832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FEA9A7-77CF-4B8F-AC0C-02563E099832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FEA9A7-77CF-4B8F-AC0C-02563E099832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FEA9A7-77CF-4B8F-AC0C-02563E099832}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
