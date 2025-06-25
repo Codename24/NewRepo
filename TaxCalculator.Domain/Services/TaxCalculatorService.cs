@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using System.Runtime;
 using TaxCalculator.Domain.Interfaces;
 using TaxCalculator.Domain.Models;
 using TaxCalculator.Infrastructure.Configuration;
@@ -8,6 +7,7 @@ namespace TaxCalculator.Domain.Services
 {
     public class TaxCalculatorService : ITaxCalculatorService
     {
+        private readonly int monthsAmount = 12;
         private readonly List<TaxBand> _taxBands;
         public TaxCalculatorService(IOptions<TaxBandSettings> taxBandSettings)
         {
@@ -51,10 +51,10 @@ namespace TaxCalculator.Domain.Services
             {
                 GrossAnnualSalary = annualSalary,
                 NetAnnualSalary = netSalary,
-                GrossMonthlySalary = annualSalary / 12,
-                NetMonthlySalary = netSalary / 12,
+                GrossMonthlySalary = annualSalary / monthsAmount,
+                NetMonthlySalary = netSalary / monthsAmount,
                 TotalTax = totalTax,
-                TotalMonthlyTaxes = totalTax / 12,
+                TotalMonthlyTaxes = totalTax / monthsAmount,
             };
 
         }

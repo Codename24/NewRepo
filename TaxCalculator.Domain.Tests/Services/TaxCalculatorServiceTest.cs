@@ -10,6 +10,7 @@ namespace TaxCalculator.Domain.Tests.Services
     {
         private readonly Mock<IOptions<TaxBandSettings>> _mockTaxBandSettings;
         private readonly TaxCalculatorService _taxCalculatorService;
+        private readonly int monthsAmount = 12;
 
         public TaxCalculatorServiceTests()
         {
@@ -46,8 +47,8 @@ namespace TaxCalculator.Domain.Tests.Services
             result.GrossAnnualSalary.Should().Be(4000);
             result.NetAnnualSalary.Should().Be(4000);
             result.TotalTax.Should().Be(0);
-            result.GrossMonthlySalary.Should().Be(4000 / 12);
-            result.NetMonthlySalary.Should().Be(4000 / 12);
+            result.GrossMonthlySalary.Should().Be(4000 / monthsAmount);
+            result.NetMonthlySalary.Should().Be(4000 / monthsAmount);
         }
 
         [Fact]
@@ -64,9 +65,9 @@ namespace TaxCalculator.Domain.Tests.Services
             result.GrossAnnualSalary.Should().Be(15000);
             result.NetAnnualSalary.Should().Be(13000);
             result.TotalTax.Should().Be(2000);
-            result.GrossMonthlySalary.Should().Be(15000 / 12);
-            result.NetMonthlySalary.Should().Be(13000 / 12);
-            result.TotalMonthlyTaxes.Should().Be(2000 / 12);
+            result.GrossMonthlySalary.Should().Be(15000 / monthsAmount);
+            result.NetMonthlySalary.Should().Be(13000 / monthsAmount);
+            result.TotalMonthlyTaxes.Should().Be(2000 / monthsAmount);
         }
 
         [Fact]
@@ -83,9 +84,9 @@ namespace TaxCalculator.Domain.Tests.Services
             result.GrossAnnualSalary.Should().Be(50000);
             result.NetAnnualSalary.Should().Be(35000);
             result.TotalTax.Should().Be(15000);
-            result.GrossMonthlySalary.Should().Be(50000 / 12);
-            result.NetMonthlySalary.Should().Be(35000 / 12);
-            result.TotalMonthlyTaxes.Should().Be(15000 / 12);
+            result.GrossMonthlySalary.Should().Be(50000 / monthsAmount);
+            result.NetMonthlySalary.Should().Be(35000 / monthsAmount);
+            result.TotalMonthlyTaxes.Should().Be(15000 / monthsAmount);
         }
 
         [Fact]
@@ -102,9 +103,9 @@ namespace TaxCalculator.Domain.Tests.Services
             result.GrossAnnualSalary.Should().Be(20000);
             result.NetAnnualSalary.Should().Be(17000);
             result.TotalTax.Should().Be(3000);
-            result.GrossMonthlySalary.Should().Be(20000 / 12);
-            result.NetMonthlySalary.Should().Be(17000 / 12);
-            result.TotalMonthlyTaxes.Should().Be(3000 / 12);
+            result.GrossMonthlySalary.Should().Be(20000 / monthsAmount);
+            result.NetMonthlySalary.Should().Be(17000 / monthsAmount);
+            result.TotalMonthlyTaxes.Should().Be(3000 / monthsAmount);
         }
 
         [Fact]
