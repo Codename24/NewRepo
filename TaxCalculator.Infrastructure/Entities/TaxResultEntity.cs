@@ -2,10 +2,10 @@
 {
     public class TaxResultEntity : BaseEntity
     {
-        public int GrossAnnualSalary { get; set; }
-        public int NetAnnualSalary { get; set; }
-        public int GrossMonthlySalary { get; set; }
-        public int NetMonthlySalary { get; set; }
-        public int TotalTax { get; set; }
+        public double GrossAnnualSalary { get; set; }
+        public double NetAnnualSalary { get; set; }
+        public double GrossMonthlySalary { get; set; }
+        public double NetMonthlySalary { get; set; }
+        public double TotalTax { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace TaxCalculator.API.Middleware
+﻿using System.Net;
+
+namespace TaxCalculator.API.Middleware
 {
     public class ExceptionHandlingMiddleware
     {
@@ -15,13 +17,25 @@
         {
             try
             {
+                // Proceed to the next middleware
                 await _next(context);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred.");
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                await context.Response.WriteAsync("An internal server error occurred.");
+                // Log the exception
+                _logger.LogError(ex, "An error occurred while processing the request.");
+
+                // Return meaningful error response
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                context.Response.ContentType = "application/json";
+
+                var errorResponse = new
+                {
+                    Message = "An internal server error occurred.",
+                    Details = ex.Message
+                };
+
+                await context.Response.WriteAsJsonAsync(errorResponse);
             }
         }
     }

@@ -1,22 +1,23 @@
-﻿using TaxCalculator.Domain.Interfaces;
+﻿using Microsoft.Extensions.Options;
+using TaxCalculator.Domain.Interfaces;
 using TaxCalculator.Domain.Models;
+using TaxCalculator.Infrastructure.Configuration;
 
 namespace TaxCalculator.Domain.Services
 {
     public class TaxCalculatorService : ITaxCalculatorService
     {
-        private static readonly List<TaxBand> TaxBands = new()
+        private readonly List<TaxBand> _taxBands;
+        public TaxCalculatorService(IOptions<TaxBandSettings> taxBandSettings)
         {
-            new TaxBand { LowerLimit = 0, UpperLimit = 5000, TaxRate = 0 },
-            new TaxBand { LowerLimit = 5000, UpperLimit = 20000, TaxRate = 20 },
-            new TaxBand { LowerLimit = 20000, UpperLimit = null, TaxRate = 40 }
-        };
+            _taxBands = taxBandSettings.Value.TaxBands ?? throw new ArgumentNullException(nameof(taxBandSettings));
+        }
 
         public async Task<TaxResult> CalculateTax(int annualSalary)
         {
             int totalTax = 0;
 
-            foreach (var band in TaxBands)
+            foreach (var band in _taxBands)
             {
                 if (annualSalary < band.LowerLimit) break;
 
