@@ -3,7 +3,6 @@ using FluentValidation;
 using Moq;
 using TaxCalculator.Application.Commands;
 using TaxCalculator.Application.Handlers;
-using TaxCalculator.Application.Validators;
 using TaxCalculator.Domain.Interfaces;
 using TaxCalculator.Domain.Models;
 
@@ -33,13 +32,9 @@ namespace TaxCalculator.Application.Tests
                     TotalMonthlyTaxes = 833,
                 });
 
-            // Initialize the validator 
-            _validator = new TaxCalculationValidator();
-
             // Initialize the handler
             _handler = new CalculateTaxHandler(
-                _mockTaxCalculatorService.Object,
-                _validator
+                _mockTaxCalculatorService.Object
             );
         }
 

@@ -1,6 +1,8 @@
 using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TaxCalculator.API.Middleware;
+using TaxCalculator.Application.Behaviours;
 using TaxCalculator.Application.Handlers;
 using TaxCalculator.Application.Validators;
 using TaxCalculator.Domain;
@@ -22,6 +24,7 @@ builder.Services.AddScoped<ITaxCalculatorService, TaxCalculatorService>();
 builder.Services.AddScoped<ITaxDataService, TaxDataService>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(SaveTaxResultHandler).Assembly));
 builder.Services.AddValidatorsFromAssemblyContaining<TaxCalculationValidator>();
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddControllers();
     
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
