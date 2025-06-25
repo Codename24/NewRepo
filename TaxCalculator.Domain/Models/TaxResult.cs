@@ -13,5 +13,6 @@ namespace TaxCalculator.Domain.Models
         public double GrossMonthlySalary { get; set; }
         public double NetMonthlySalary { get; set; }
         public double TotalTax { get; set; }
+        public double TotalMonthlyTaxes { get; set; }
     }
 }

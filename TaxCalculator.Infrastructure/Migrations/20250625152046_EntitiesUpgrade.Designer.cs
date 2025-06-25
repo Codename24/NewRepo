@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaxCalculator.Infrastructure.Persistance;
 
@@ -11,9 +12,11 @@ using TaxCalculator.Infrastructure.Persistance;
 namespace TaxCalculator.Infrastructure.Migrations
 {
     [DbContext(typeof(TaxDbContext))]
-    partial class TaxDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250625152046_EntitiesUpgrade")]
+    partial class EntitiesUpgrade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -14,6 +14,7 @@ namespace TaxCalculator.Domain
                 .ForMember(dest => dest.GrossAnnualSalary, opt => opt.MapFrom(c => c.GrossAnnualSalary))
                 .ForMember(dest => dest.NetAnnualSalary, opt => opt.MapFrom(c => c.NetAnnualSalary))
                 .ForMember(dest => dest.GrossMonthlySalary, opt => opt.MapFrom(c => c.GrossMonthlySalary))
+                .ForMember(dest => dest.TotalMonthlyTaxes, opt => opt.MapFrom(c => c.TotalMonthlyTaxes))
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedDate, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedDate, opt => opt.Ignore());
@@ -23,7 +24,8 @@ namespace TaxCalculator.Domain
                 .ForMember(dest => dest.NetMonthlySalary, opt => opt.MapFrom(c => c.NetMonthlySalary))
                 .ForMember(dest => dest.GrossAnnualSalary, opt => opt.MapFrom(c => c.GrossAnnualSalary))
                 .ForMember(dest => dest.NetAnnualSalary, opt => opt.MapFrom(c => c.NetAnnualSalary))
-                .ForMember(dest => dest.GrossMonthlySalary, opt => opt.MapFrom(c => c.GrossMonthlySalary));
+                .ForMember(dest => dest.GrossMonthlySalary, opt => opt.MapFrom(c => c.GrossMonthlySalary))
+                .ForMember(dest => dest.TotalMonthlyTaxes, opt => opt.MapFrom(c => c.TotalMonthlyTaxes));
         }
     }
 }

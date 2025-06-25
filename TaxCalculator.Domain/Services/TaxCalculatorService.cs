@@ -44,7 +44,8 @@ namespace TaxCalculator.Domain.Services
                 NetAnnualSalary = netSalary,
                 GrossMonthlySalary = annualSalary / 12,
                 NetMonthlySalary = netSalary / 12,
-                TotalTax = totalTax
+                TotalTax = totalTax,
+                TotalMonthlyTaxes = totalTax / 12,
             };
         }
 
