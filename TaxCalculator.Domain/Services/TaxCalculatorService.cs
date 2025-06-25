@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Runtime;
 using TaxCalculator.Domain.Interfaces;
 using TaxCalculator.Domain.Models;
 using TaxCalculator.Infrastructure.Configuration;
@@ -10,7 +11,13 @@ namespace TaxCalculator.Domain.Services
         private readonly List<TaxBand> _taxBands;
         public TaxCalculatorService(IOptions<TaxBandSettings> taxBandSettings)
         {
-            _taxBands = taxBandSettings.Value.TaxBands ?? throw new ArgumentNullException(nameof(taxBandSettings));
+            var settings = taxBandSettings.Value;
+            if (settings == null || settings.TaxBands.Count == 0)
+            {
+                throw new InvalidOperationException("TaxBands configuration is missing or empty.");
+            }
+
+            _taxBands = settings.TaxBands;
         }
 
         public async Task<TaxResult> CalculateTax(int annualSalary)

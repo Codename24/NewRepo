@@ -5,6 +5,9 @@ using TaxCalculator.Domain.Models;
 
 namespace TaxCalculator.Application.Handlers
 {
+    /// <summary>
+    /// Query Handler for retireval of calculation history
+    /// </summary>
     public class RetrieveTaxResultsHandler : IRequestHandler<RetrieveTaxResultsQuery, IEnumerable<TaxResult>>
     {
         private readonly ITaxDataService _taxDataService;

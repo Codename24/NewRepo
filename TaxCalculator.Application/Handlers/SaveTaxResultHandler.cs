@@ -5,6 +5,9 @@ using TaxCalculator.Domain.Interfaces;
 
 namespace TaxCalculator.Application.Handlers
 {
+    /// <summary>
+    /// Command Handler for Saving tax calculations
+    /// </summary>
     public class SaveTaxResultHandler : IRequestHandler<SaveTaxResultCommand, bool>
     {
         private readonly ITaxDataService _taxDataService;
