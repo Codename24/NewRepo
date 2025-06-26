@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using FluentValidation;
+using System.Net;
 
 namespace TaxCalculator.API.Middleware
 {
@@ -19,6 +20,20 @@ namespace TaxCalculator.API.Middleware
             {
                 // Proceed to the next middleware
                 await _next(context);
+            }
+            catch (ValidationException validationException)
+            {
+                _logger.LogError($"An error occurred during validation{validationException.Errors}");
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+                var errorResponse = new
+                {
+                    context.Response.StatusCode,
+                    Message = "Validation failed.",
+                    validationException.Errors
+                };
+                await context.Response.WriteAsJsonAsync(errorResponse);
             }
             catch (Exception ex)
             {
